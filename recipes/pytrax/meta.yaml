@@ -1,0 +1,44 @@
+{% set name = "pytrax" %}
+{% set version = "0.1.1" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 5d1600b455b050d6ff6d17da089afb3d7dca19e920f4a1d801a74d329e4dbc0c
+
+build:
+  number: 0
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv "
+  noarch: python
+
+requirements:
+  host:
+    - pip
+    - python
+  run:
+    - matplotlib
+    - numpy
+    - porespy
+    - python
+    - scipy
+    - tqdm
+
+test:
+  imports:
+    - pytrax
+
+about:
+  home: http://pytrax.readthedocs.org
+  license: MIT
+  license_family: MIT
+  license_file:
+  summary: A random walk for estimating the toruosity tensor of images
+  doc_url:
+  dev_url:
+
+extra:
+  recipe-maintainers:
+    - bryanwweber

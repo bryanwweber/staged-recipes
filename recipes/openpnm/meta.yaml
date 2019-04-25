@@ -1,0 +1,82 @@
+{% set name = "openpnm" %}
+{% set version = "2.0.3" %}
+{% set sha256 = "4dbe271805d830c7adcd3fe38682468c5f547af14e9a60bfa15c212fa73b61c9" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: {{ sha256 }}
+
+build:
+  number: 0
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv "
+  noarch: python
+
+requirements:
+  host:
+    - pip
+    - python
+  run:
+    - flatdict
+    - gitpython
+    - h5py >=2.8
+    - matplotlib
+    - networkx >=2
+    - numba
+    - numpy >=1.15
+    - pandas
+    - porespy
+    - python
+    - scikit-image >=0.14
+    - scipy >=1.1
+    - sympy
+    - transforms3d
+
+test:
+  requires:
+    - codecov
+    - coverage
+    - pep8
+    - pytest
+    - pytest-cache
+    - pytest-cov
+    - pytest-pep8
+    - testfixtures
+  imports:
+    - openpnm
+    - openpnm.algorithms
+    - openpnm.core
+    - openpnm.geometry
+    - openpnm.io
+    - openpnm.materials
+    - openpnm.models
+    - openpnm.models.geometry
+    - openpnm.models.misc
+    - openpnm.models.phases
+    - openpnm.models.physics
+    - openpnm.network
+    - openpnm.phases
+    - openpnm.physics
+    - openpnm.topotools
+    - openpnm.utils
+  # commands:
+  #   - python {{ SRC_DIR }}/bin/test
+  # source_files:
+  #   - bin/**
+  #   - tests/**
+
+about:
+  home: http://openpnm.org
+  license: MIT
+  license_family: MIT
+  # license_file: LICENSE
+  summary: A framework for conducting pore network modeling simulations of multiphase transport in porous materials
+  doc_url: https://openpnm.readthedocs.io/en/master/
+  dev_url: https://github.com/PMEAL/OpenPNM
+
+extra:
+  recipe-maintainers:
+    - bryanwweber

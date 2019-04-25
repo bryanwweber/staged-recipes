@@ -1,0 +1,35 @@
+{% set name = "flatdict" %}
+{% set version = "3.1.0" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: c4995d689fb275e6a29df7fba7a3732cb100f3b89e8f0e741f284f376c71908b
+
+build:
+  number: 0
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv "
+  noarch: python
+
+requirements:
+  host:
+    - pip
+    - python
+  run:
+    - python
+
+about:
+  home: https://github.com/gmr/flatdict
+  license: BSD
+  license_family: BSD
+  license_file:
+  summary: Python module for interacting with nested dicts as a single level dict with delimited keys.
+  doc_url:
+  dev_url:
+
+extra:
+  recipe-maintainers:
+    - bryanwweber

@@ -1,0 +1,58 @@
+{% set name = "porespy" %}
+{% set version = "1.1.0" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: f5b6a2435cdd7c922a56b471d4864f389ee1d479670f139f8430d828a985567a
+
+build:
+  number: 0
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv "
+  noarch: python
+
+requirements:
+  host:
+    - pip
+    - python
+  run:
+    - array_split
+    - imageio
+    - matplotlib
+    - numba
+    - numpy
+    - openpnm
+    - pandas
+    - pyevtk
+    - python
+    - pytrax
+    - scikit-image
+    - scipy
+    - tqdm
+
+test:
+  imports:
+    - porespy
+    - porespy.filters
+    - porespy.generators
+    - porespy.io
+    - porespy.metrics
+    - porespy.networks
+    - porespy.tools
+    - porespy.visualization
+
+about:
+  home: http://porespy.org
+  license: MIT
+  license_family: MIT
+  license_file:
+  summary: A set of tools for analyzing 3D images of porous materials
+  doc_url:
+  dev_url:
+
+extra:
+  recipe-maintainers:
+    - bryanwweber
