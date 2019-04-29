@@ -1,5 +1,6 @@
 {% set name = "array_split" %}
 {% set version = "0.5.2" %}
+{% set sha256 = "ee838fdb1354ac4d97bbf380a22bcac5c56193737bd1a3063c7b0e9d6e981450" %}
 
 package:
   name: "{{ name|lower }}"
@@ -7,7 +8,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: ee838fdb1354ac4d97bbf380a22bcac5c56193737bd1a3063c7b0e9d6e981450
+  sha256: "{{ sha256 }}"
 
 build:
   number: 0
@@ -30,11 +31,13 @@ about:
   home: http://github.com/array-split/array_split
   license: MIT
   license_family: MIT
-  license_file:
+  license_file: LICENSE.txt
   summary: Python package for splitting arrays into sub-arrays (i.e. rectangular-tiling and rectangular-domain-decomposition), similar to ``numpy.array_split``.
-  doc_url:
-  dev_url:
+  doc_url: https://array-split.readthedocs.io/en/latest/
+  dev_url: http://github.com/array-split/array_split
 
 extra:
   recipe-maintainers:
     - bryanwweber
+    - jgostick
+    - ma-sadeghi

@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  sha256: "{{ sha256 }}"
 
 build:
   number: 0
@@ -36,15 +36,6 @@ requirements:
     - transforms3d
 
 test:
-  requires:
-    - codecov
-    - coverage
-    - pep8
-    - pytest
-    - pytest-cache
-    - pytest-cov
-    - pytest-pep8
-    - testfixtures
   imports:
     - openpnm
     - openpnm.algorithms
@@ -62,11 +53,6 @@ test:
     - openpnm.physics
     - openpnm.topotools
     - openpnm.utils
-  # commands:
-  #   - python {{ SRC_DIR }}/bin/test
-  # source_files:
-  #   - bin/**
-  #   - tests/**
 
 about:
   home: http://openpnm.org
@@ -80,3 +66,5 @@ about:
 extra:
   recipe-maintainers:
     - bryanwweber
+    - jgostick
+    - ma-sadeghi

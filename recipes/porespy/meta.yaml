@@ -1,5 +1,6 @@
 {% set name = "porespy" %}
 {% set version = "1.1.0" %}
+{% set sha256 = "f5b6a2435cdd7c922a56b471d4864f389ee1d479670f139f8430d828a985567a" %}
 
 package:
   name: "{{ name|lower }}"
@@ -7,7 +8,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: f5b6a2435cdd7c922a56b471d4864f389ee1d479670f139f8430d828a985567a
+  sha256: "{{ sha256 }}"
 
 build:
   number: 0
@@ -48,11 +49,13 @@ about:
   home: http://porespy.org
   license: MIT
   license_family: MIT
-  license_file:
+  license_file: LICENSE
   summary: A set of tools for analyzing 3D images of porous materials
-  doc_url:
-  dev_url:
+  doc_url: https://porespy.readthedocs.io/en/master/
+  dev_url: https://github.com/PMEAL/porespy
 
 extra:
   recipe-maintainers:
     - bryanwweber
+    - jgostick
+    - ma-sadeghi
